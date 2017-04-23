@@ -76,9 +76,9 @@ def add_page(cat, title, url, views=0):
 # entry already exists using the name attribute. If it doesn't exist,
 # then it creates a new object and then in the next line the function
 # saves the new object and then returns it.
-def add_cat(name):
+def add_cat(name, views, likes):
     # the [0] is so that c = the first object only and not the bool
-    c = Category.objects.get_or_create(name=name)[0]
+    c = Category.objects.get_or_create(name=name, views=views, likes=likes)[0]
     c.save()
     return c
 
