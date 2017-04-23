@@ -1,18 +1,27 @@
 <!DOCTYPE html>
+
+{% load staticfiles %}
+
 <html>
-	
+
 	<head>
 		<title>Rango</title>
+		<!-- CSS -->
+		<link rel="stylesheet" href="{% static "css/base.css" %}" />
+		<!-- JavaScript -->
+		<script src="{% static "js/jquery.js" %}"></script>
 	</head>
-	
+
 	<body>
-		<h1>Rango says...</h1>
+    <h1>Rango says...</h1>
 		<div>
 			hey there partner! <br />
-			<strong>{{ boldmessage }}</strong><br />
+			<strong>{{ bold_message }}</strong><br />
 		</div>
 		<div>
-			<a href="/rango/about">About</a><br />
+			<! -- Image -->
+			<img src="{% static "images/rango.jpeg" %}"
+			      alt="Picture of Rango" />
 		</div>
 	</body>
 </html>
