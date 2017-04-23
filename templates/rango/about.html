@@ -1,8 +1,15 @@
 <!DOCTYPE html>
+
+{% load staticfiles %}
+
 <html>
 	
 	<head>
 		<title>Rango About Page</title>
+        <!-- CSS -->
+		<link rel="stylesheet" href="{% static "css/base.css" %}" />
+		<!-- JavaScript -->
+		<script src="{% static "js/jquery.js" %}"></script>
 	</head>
 	
 	<body>
@@ -10,9 +17,10 @@
 		<div>
 			hey there partner! <br />
 			<strong>{{ boldmessage }}</strong><br />
+            <img src="{{ MEDIA_URL}}cat.png">
 		</div>
-		<div>
-			<a href="/rango">Home</a><br />
-		</div>
+        <div>
+            <p>This tutorial has been put together by Alex.</p>
+        </div>
 	</body>
 </html>
