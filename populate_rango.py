@@ -44,15 +44,24 @@ def populate():
 
     # Dictionary of dictionaries for the categories
     cats = {
-        "Python": {"pages": python_pages},
-        "Django": {"pages": django_pages},
-        "Other Frameworks": {"pages": other_pages}
+        "Python": 
+			{"pages": python_pages, 
+			 "views": 128, 
+			 "likes": 32},
+        "Django": 
+			{"pages": django_pages,
+			 "views": 64, 
+			 "likes": 32},			
+        "Other Frameworks": 
+			{"pages": other_pages,
+			 "views": 32, 
+			 "likes": 16},
     }
 
     # Iterate over the categories and the data in the categories to
     # add the category names and the pages to the database
     for cat, cat_data in cats.items():
-        c = add_cat(cat)  # c == category name
+        c = add_cat(cat, views=cat_data["views"], likes=cat_data["likes"])
         for p in cat_data["pages"]:
             add_page(c, p["title"], p["url"])
 
@@ -78,7 +87,9 @@ def add_page(cat, title, url, views=0):
 # saves the new object and then returns it.
 def add_cat(name, views, likes):
     # the [0] is so that c = the first object only and not the bool
-    c = Category.objects.get_or_create(name=name, views=views, likes=likes)[0]
+    c = Category.objects.get_or_create(name=name)[0]
+    c.views = views
+    c.likes = likes
     c.save()
     return c
 
