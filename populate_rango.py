@@ -47,7 +47,7 @@ def populate():
         "Python": 
 			{"pages": python_pages, 
 			 "views": 128, 
-			 "likes": 32},
+			 "likes": 64},
         "Django": 
 			{"pages": django_pages,
 			 "views": 64, 
