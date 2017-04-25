@@ -3,25 +3,19 @@
 {% load staticfiles %}
 
 <html>
-
 	<head>
 		<title>Rango</title>
 		<!-- CSS -->
 		<link rel="stylesheet" href="{% static "css/base.css" %}" />
-		<!-- JavaScript -->
-		<script src="{% static "js/jquery.js" %}"></script>
+{#		<!-- JavaScript -->#}
+{#		<script src="{% static "js/jquery.js" %}"></script>#}
 	</head>
-
 	<body>
-    <h1>Rango says...</h1>
-		<div>
-			hey there partner! <br />
-			<strong>{{ bold_message }}</strong><br />
-		</div>
-		<div>
-			<! -- Image -->
-			<img src="{% static "images/rango.jpeg" %}"
-			      alt="Picture of Rango" />
-		</div>
-	</body>
+        <h1>Rango says...</h1>
+            <div>
+                hey there partner!
+            </div>
+        {% block content %}
+        {% endblock %}
+    </body>
 </html>

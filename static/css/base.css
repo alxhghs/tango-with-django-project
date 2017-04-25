@@ -1,7 +1,20 @@
-head {
-    text-align: center;
-}
+/*.fade {*/
+    /*opacity:0.5;*/
+/*}*/
+/*.fade:hover {*/
+    /*opacity:1;*/
+/*}*/
+/*.grow:hover {*/
+    /*-webkit-transform: scale{1.3};*/
+    /*-ms-transform: scale(1.3);*/
+    /*transform: scale(1.3);*/
+/*}*/
 
-body {
-    text-align: center;
+/*.grow {*/
+    /*text-align: center;*/
+/*}*/
+
+h1 {
+    align-content: center;
+    color: green;
 }
