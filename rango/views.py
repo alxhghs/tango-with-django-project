@@ -65,6 +65,7 @@ def add_category(request):
         # Have we been provided a valid form?
         if form.is_valid():
             # Save the new category to the database
+            print("Form is valid, returning index(request)...")
             form.save(commit=True)
             # Now that the category is saved
             # we could give a confirmation message
@@ -74,6 +75,7 @@ def add_category(request):
         else:
             # The supplied form contained errors -
             # just print them to the terminal.
+            print("Printing errors...")
             print(form.errors)
     # Will handle the bad for, new form or no form supplied cases
     # Render the form with error messages (if any)
