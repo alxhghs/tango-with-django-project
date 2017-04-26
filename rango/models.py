@@ -7,10 +7,10 @@ class Category(models.Model):
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
     slug = models.SlugField(unique=True)
-    
-    def save(self, *args, **kwargs):
+
+    def save(self, *args, **kwargs):  # what does *args, **kwargs do here?
         self.slug = slugify(self.name)
-      #  super(Category, self).save(*args, **kwargs)
+        #  super(Category, self).save(*args, **kwargs)
         super().save(*args, **kwargs)
 
     class Meta:
@@ -23,7 +23,7 @@ class Category(models.Model):
 class Page(models.Model):
     category = models.ForeignKey(Category)
     title = models.CharField(max_length=128)
-    url = models.URLField()
+    url = models.URLField(max_length=200)
     views = models.IntegerField(default=0)
 
     def __str__(self):

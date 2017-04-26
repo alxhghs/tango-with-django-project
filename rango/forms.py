@@ -1,3 +1,5 @@
+# rango/forms.py
+
 from django import forms
 from rango.models import Page, Category
 
