@@ -11,6 +11,7 @@ def index(request):
     # Retrieve the top 5 only - or all if less than 5.
     # Place the list in our context_dict dictionary
     # that will be passed to the template engine.
+    print("views.index called by urls.py")
     category_list = Category.objects.order_by('-likes')[:5]
     page_list = Page.objects.order_by('-views')[:5]
     context_dict = {'categories': category_list, 'pages': page_list}
@@ -18,12 +19,14 @@ def index(request):
 
 
 def about(request):
+    print("views.about called by urls.py")
     return render(request, 'rango/about.html')
     
 
 def show_category(request, category_name_slug):
     # Create a context dictionary which we can pass
     # to the template rendering engine.
+    print("show_category called by urls.py")
     context_dict = {}
 
     try:
@@ -32,7 +35,7 @@ def show_category(request, category_name_slug):
         # So the .get() method returns one model instance or raises an
         # exception.
         category = Category.objects.get(slug=category_name_slug)
-
+        print("category exists...")
         # Retrieve all of the associated pages.
         # Note that filter() will return a list of page objects or
         # an empty list.
@@ -49,6 +52,7 @@ def show_category(request, category_name_slug):
         # We get here if we didn't find the specified category.
         # Don't do anything -
         # the template will display the "no category" message for us.
+        print("except Category.DoesNotExist...")
         context_dict['category'] = None
         context_dict['pages'] = None
 
@@ -57,8 +61,8 @@ def show_category(request, category_name_slug):
 
 
 def add_category(request):
+    print("views.add_category creating a CategoryForm object...")
     form = CategoryForm()
-
     # A HTTP POST?
     if request.method == 'POST':
         form = CategoryForm(request.POST)
