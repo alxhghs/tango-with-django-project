@@ -11,12 +11,15 @@
                 <li><a href="{{  page.url }}">{{ page.title }}</a></li>
             {%  endfor %}
             </ul>
+            <img src="{% static "images/happy_rango.jpg" %}" alt="Picture of happy Rango" /><br />
         {% else %}
             <p><strong>No pages currently in category.</strong></p>
+            <img src="{% static "images/sad_rango.jpg" %}" alt="Picture of sad Rango" /><br />
         {% endif %}
     {%  else %}
-        The specified category does not exist!
+        <p>The specified category does not exist!</p>
+        <img src="{% static "images/sad_rango.jpg" %}" alt="Picture of sad Rango" /><br />
     {% endif %}
-    <a href="/rango/">Return to Index</a>
+    <p><a href="/rango/">Return to Index</a></p>
     </div>
 {% endblock %}

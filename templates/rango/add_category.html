@@ -6,6 +6,8 @@
 <div>
     <form id="category_form" method="post" action="/rango/add_category/">
         {% csrf_token %}
+{#        hidden is necessary so that the data isn't lost since HTTP is #}
+{#        stateless #}
         {% for hidden in form.hidden_fields %}
             {{ hidden }}
         {% endfor %}

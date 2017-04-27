@@ -19,14 +19,13 @@ def index(request):
 
 
 def about(request):
-    print("views.about called by urls.py")
     return render(request, 'rango/about.html')
     
 
 def show_category(request, category_name_slug):
     # Create a context dictionary which we can pass
     # to the template rendering engine.
-    print("show_category called by urls.py")
+    print("\nshow_category called by urls.py")
     context_dict = {}
 
     try:
@@ -34,6 +33,8 @@ def show_category(request, category_name_slug):
         # If we can't the .get() method raises a DoesNotExist exception.
         # So the .get() method returns one model instance or raises an
         # exception.
+        print("views.show_category - "
+              "Category.objects.get(slug=category_name_slug)")
         category = Category.objects.get(slug=category_name_slug)
         print("category exists...")
         # Retrieve all of the associated pages.
@@ -57,11 +58,11 @@ def show_category(request, category_name_slug):
         context_dict['pages'] = None
 
     # Go render the response and return it to the client.
+    print("return render(request, 'rango/category.html, context_dict)\n")
     return render(request, 'rango/category.html', context_dict)
 
 
 def add_category(request):
-    print("views.add_category creating a CategoryForm object...")
     form = CategoryForm()
     # A HTTP POST?
     if request.method == 'POST':
@@ -70,7 +71,10 @@ def add_category(request):
         if form.is_valid():
             # Save the new category to the database
             print("Form is valid, returning index(request)...")
+            cat = form.save(commit=True)
             form.save(commit=True)
+            print("views.add_category printing category name and url slug - "
+                  "name: {}, slug: {}".format(cat, cat.slug))
             # Now that the category is saved
             # we could give a confirmation message
             # But since the most recent category added is on the index page
@@ -83,4 +87,6 @@ def add_category(request):
             print(form.errors)
     # Will handle the bad for, new form or no form supplied cases
     # Render the form with error messages (if any)
+    print("views.add_category returned render b/c request.method != 'POST' "
+          "or there are errors")
     return render(request, 'rango/add_category.html', {'form': form})
