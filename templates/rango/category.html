@@ -20,6 +20,7 @@
         <p>The specified category does not exist!</p>
         <img src="{% static "images/sad_rango.jpg" %}" alt="Picture of sad Rango" /><br />
     {% endif %}
+    <p><a href="/rango/add_page/{{ category.slug }}/">Add page</a></p>
     <p><a href="/rango/">Return to Index</a></p>
     </div>
 {% endblock %}
